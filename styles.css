@@ -1,0 +1,349 @@
+@font-face {
+    font-family: 'Inter-regular';
+    src: url('./fonts/Inter24pt-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter-bold';
+    src: url('./fonts/Inter24pt-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter-bold-italic';
+    src: url('./fonts/Inter24pt-SemiBoldItalic.woff2') format('woff2');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+
+a {
+    text-decoration: none;  
+    color: black;           
+}
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl
+):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+
+  height: 100%;
+  
+  
+  
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android)
+ */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут fill со значением 'none' или начинается с 'url')
+ */
+:where([fill]:not(
+  [fill="none"],
+  [fill^="url"]
+)) {
+  fill: currentColor;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not(
+  [stroke="none"],
+  [stroke^="url"]
+)) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Приведение рамок таблиц в классический 'collapse' вид
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root{
+    --color-text-dark: #403F3D;
+    --color-text-alternative: #E1D4C9 ;
+    --color-text-link: #B0907A;
+
+    --color-background-page:#E1D4C9;
+    --color-background-overlay:#403F3D 80%;
+    --color-background-container:#665F55 ;
+
+    --color-border: #C1B6AD;
+    --color-border-inverse:#665F55;
+}
+body{
+    max-width: 1440px;
+    width:100%;
+    margin: 0 auto;
+    background-color: var(--color-background-page);
+    padding-top: 20px;
+    padding-bottom: 40px;
+    gap: 100px;
+}
+
+header{
+    width: 100%;
+    gap: 20px;
+    font-family: 'Inter-regular';
+    font-size: 16px;
+    line-height: 1.05;
+    letter-spacing: 0.0em;
+    color: var(--color-text-dark);
+}
+
+.header-top{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.header-top-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.menu-list{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.header-actions{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+}
+.theme-switch{
+    padding: 4px 4px 4px 4px;
+    gap: 8px;
+    border-radius: 30px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+}
+
+.coffee-menu-link{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-bot{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.header-bot-container{
+    
+    border-radius: 40px;
+    background-image: url(./images/img-hero.svg);
+    background-position: center;
+    background-size: 100%;
+    
+    padding: 100px 100px 100px 100px;
+}
+
+.hero-container{
+    max-width: 530px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.hero-button{
+    background-color: var(--color-text-alternative);
+    border-radius: 100px;
+    border: none;
+    padding: 20px 78px 20px 78px;
+}
+
+.hero-header{
+    font-family: 'Inter-bold';
+    font-size: 72px;
+    line-height: 1.05;
+    letter-spacing: 0.0em;
+    color: var(--color-text-alternative);
+}
+
+.hero-info{
+    font-family: 'Inter-regular';
+    font-size: 16px;
+    line-height: 1.50;
+    letter-spacing: 0.0em;
+    color: var(--color-text-alternative);
+}
