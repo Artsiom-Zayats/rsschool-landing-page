@@ -433,6 +433,13 @@ header{
     letter-spacing: 0.0em;
     color: var(--color-text-dark);
 }
+ .menu-list-item, .menu-tab-info{
+  font-family: 'Inter-bold';
+    font-size: 16px;
+    line-height: 1.50;
+    letter-spacing: 0.0em;
+    color: var(--color-text-dark);
+ }
 
 .slide-cost, .card-cost{
     font-family: 'Inter-bold';
