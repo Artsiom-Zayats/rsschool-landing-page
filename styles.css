@@ -371,6 +371,7 @@ header{
     align-items: center;
     justify-content: space-between;
     gap: 40px;
+    overflow: hidden;
 }
 
 .button-prev{
@@ -399,7 +400,9 @@ header{
 }
 
 .slider-row{
-    width: max-content;
+  display: flex;
+  transition: transform 0.5s ease;
+  flex: 1;
 }
 
 .slide-container{
@@ -771,3 +774,24 @@ background-color: transparent;
     color: var(--color-text-dark);
 }
 
+.slider-controls{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  height: 4px;
+  padding-top: 40px;
+}
+
+.controls{
+  border-radius: 4px;
+  width: 40px;
+  height: 4px;
+  background-color: var(--color-border);
+}
+
+
+.slide {
+  flex: 0 0 100%;
+  width: 100%;
+}
