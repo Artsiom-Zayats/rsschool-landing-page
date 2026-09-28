@@ -371,7 +371,6 @@ header{
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    overflow: hidden;
 }
 
 .button-prev{
@@ -400,9 +399,17 @@ header{
 }
 
 .slider-row{
-  display: flex;
-  transition: transform 0.5s ease;
-  flex: 1;
+   flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;      
+    -ms-overflow-style: none;  
+}
+
+.slider-row::-webkit-scrollbar {
+    display: none;               
 }
 
 .slide-container{
@@ -776,22 +783,25 @@ background-color: transparent;
 
 .slider-controls{
   display: flex;
-  gap: 12px;
-  align-items: center;
   justify-content: center;
-  height: 4px;
-  padding-top: 40px;
+  gap: 8px;
+  margin-top: 40px;
 }
 
 .controls{
-  border-radius: 4px;
   width: 40px;
-  height: 4px;
-  background-color: var(--color-border);
+  height: 8px;
+  border-radius: 4px;
+  background-color: var(--color-border); 
+  transition: background-color 0.3s ease;
 }
 
+.controls.active {
+  background-color: var(--color-border-inverse);
+}
 
 .slide {
-  flex: 0 0 100%;
-  width: 100%;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
 }
